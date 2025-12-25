@@ -1,18 +1,18 @@
 {
     "manifest_version": 3,
-    "name": "Firefox Extension Test",
+    "name": "Reddit Image Easy Scroller Extension",
     "version": "1.0",
-    "description": "Adds a red border to all webpages matching mozilla.org.",
+    "description": "Easily scroll through multiple images on reddit with this extension",
     "icons": {
         "48": "icons/border-48.png"
     },
     "content_scripts": [
         {
             "matches": [
-                "*://*.mozilla.org/*"
+                "https://*.reddit.com/*"
             ],
             "js": [
-                "borderify.js"
+                "easy-scroll.js"
             ]
         }
     ]

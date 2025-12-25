@@ -1,9 +1,3 @@
-## Firefox Extension Test
-- Template for creating firefox extension.
-- Can probably be used on Chrome too.
-- Chrome only need manifest version 3, while Firefox still accept manifest version 2.
-
-## References
-- https://discourse.mozilla.org/t/get-started-with-firefox-extension-development/76051
-- https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension
-- https://www.freecodecamp.org/news/building-chrome-extension/
+## Reddit Image Easy Scroller Extension
+- Normally on reddit posts with image albums, you cannot zoom them and have to move left and right by manually clicking the buttons with mouse (you cannot use left and right arrow keys.)
+- With this firefox extension, the image albums can be shown on new tabs, with zoom and scroll functionalities.
