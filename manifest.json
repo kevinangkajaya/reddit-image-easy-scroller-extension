@@ -3,17 +3,16 @@
     "name": "Reddit Image Easy Scroller Extension",
     "version": "1.0",
     "description": "Easily scroll through multiple images on reddit with this extension",
+    "homepage_url": "https://github.com/kevinangkajaya/reddit-image-easy-scroller-extension",
     "icons": {
         "48": "icons/border-48.png"
     },
-    "content_scripts": [
-        {
-            "matches": [
-                "https://*.reddit.com/*"
-            ],
-            "js": [
-                "easy-scroll.js"
-            ]
-        }
-    ]
+    "permissions": [
+        "tabs"
+    ],
+    "action": {
+        "default_icon": "icons/beasts-32.png",
+        "default_title": "Open Image Content",
+        "default_popup": "popup/open.html"
+    }
 }
