@@ -3,15 +3,23 @@
  * the content script in the page.
  */
 function listenForClicks() {
-    document.getElementById("open-popup").addEventListener("click", (e) => {
-        console.log("open popup clicked");
+    document.addEventListener("click", (e) => {
+        console.log(e)
+
+        /**
+         * Get the active tab,
+         * then call "beastify()" or "reset()" as appropriate.
+         */
+        if (e.target.id === "open-popup") {
+            console.log("here open-popup")
+            return;
+        }
     });
-    console.log("listenForClicks loaded");
 }
 
 /**
- * add a click handler.
+ * When the popup loads, inject a content script into the active tab,
+ * and add a click handler.
+ * If we couldn't inject the script, handle the error.
  */
-console.log("22222")
-listenForClicks()
-console.log("11111")
+browser.tabs.then(listenForClicks)
