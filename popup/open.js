@@ -42,6 +42,7 @@ const findGalleryCarousel = async () => {
                     const imgs = li.getElementsByTagName('img')
 
                     for (const img of imgs) {
+                        // ========================= append image sources =========================
                         if (img.src) {
                             imgSrc.add(img.src)
                         } else if (img.getAttribute("data-src")) {
@@ -58,7 +59,12 @@ const findGalleryCarousel = async () => {
         }
     })
 
-    return imgSrc;
+    // browser.scripting.executeScript returns result stored in array of object with 'result' key
+    if (imgSrc.length == 1 && imgSrc[0].result) {
+        return imgSrc[0].result;
+    } else {
+        throw new Error("Invalid imgSrc", imgSrc)
+    }
 }
 
 
@@ -69,14 +75,25 @@ const findGalleryCarousel = async () => {
 const listenForClicks = () => {
 
     document.getElementById("open-popup").addEventListener("click", (e) => {
-        console.log(e)
 
+        // ========================= find gallery carousel =========================
         findGalleryCarousel().then((imgSrc) => {
 
-            console.log(imgSrc)
-            // browser.tabs.create({
-            //     url: "/image_content/image_content.html"
-            // })
+            // ======================= make new unique id =======================
+            const newID = `image-content-${crypto.randomUUID()}`;
+
+            // ======================= create local storage =======================
+            browser.storage.session.set({
+                [newID]: imgSrc
+            })
+
+            // ========================= create new tab =========================
+            let urlParam = new URLSearchParams()
+            urlParam.set("unique-id", newID)
+
+            browser.tabs.create({
+                url: "/image_content/image_content.html?" + urlParam.toString()
+            })
 
         })
     });
