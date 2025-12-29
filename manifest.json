@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Reddit Image Easy Scroller Extension",
     "version": "1.0",
     "description": "Easily scroll through multiple images on reddit with this extension",
@@ -8,9 +8,9 @@
         "48": "icons/border-48.png"
     },
     "permissions": [
-        "activeTab"
+        "scripting"
     ],
-    "browser_action": {
+    "action": {
         "default_icon": "icons/beasts-32.png",
         "default_title": "Open Image Content",
         "default_popup": "popup/open.html"
