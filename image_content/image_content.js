@@ -20,4 +20,30 @@ const getGalleryCarousel = () => {
     })
 }
 
+const createZoomOptions = () => {
+    let htmlContent = '';
+
+    for (let i = 10; i <= 200; i += 10) {
+        htmlContent += `<option 
+            value="${i}" 
+            ${i === 100 ? "selected" : ""}
+        >${i}%</option>`
+    }
+    document.getElementById("zoom").setHTMLUnsafe(htmlContent)
+}
+
+const zoomOnChange = () => {
+    document.getElementById("zoom").addEventListener("click", (e) => {
+        const selectedValue = e.target.value;
+
+        const imgs = document.getElementsByClassName("image-content-img")
+        for (const img of imgs) {
+            const naturalWidth = img.naturalWidth;
+            img.style.width = `${parseInt(selectedValue) / 100 * naturalWidth}px`;
+        }
+    })
+}
+
 getGalleryCarousel();
+createZoomOptions();
+zoomOnChange();
