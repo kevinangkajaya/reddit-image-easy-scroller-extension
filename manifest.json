@@ -11,16 +11,12 @@
         "storage",
         "scripting"
     ],
+    "host_permissions": [
+        "https://*.reddit.com/*"
+    ],
     "action": {
         "default_icon": "icons/beasts-32.png",
         "default_title": "Open Image Content",
         "default_popup": "popup/open.html"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "https://*.reddit.com/*"
-            ]
-        }
-    ]
+    }
 }

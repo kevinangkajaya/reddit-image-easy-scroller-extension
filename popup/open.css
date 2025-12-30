@@ -2,3 +2,11 @@
     display: flex;
     align-items: center;
 }
+
+.hidden {
+    display: none;
+}
+
+#error-content-detail {
+    color: red;
+}

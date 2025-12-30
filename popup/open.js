@@ -23,6 +23,13 @@ const testing = () => {
     })
 }
 
+const onError = (err) => {
+    document.querySelector("#popup-content").classList.add("hidden");
+    document.querySelector("#error-content").classList.remove("hidden");
+
+    document.querySelector("#error-content-detail").setHTMLUnsafe(err);
+}
+
 const findGalleryCarousel = async () => {
     let activeTab = await getActiveTab()
 
@@ -78,6 +85,9 @@ const listenForClicks = () => {
 
         // ========================= find gallery carousel =========================
         findGalleryCarousel().then((imgSrc) => {
+            if (imgSrc.size === 0) {
+                throw new Error("No pictures or only 1 picture present, requires multiple pictures")
+            }
 
             // ======================= make new unique id =======================
             const newID = `image-content-${crypto.randomUUID()}`;
@@ -95,6 +105,8 @@ const listenForClicks = () => {
                 url: "/image_content/image_content.html?" + urlParam.toString()
             })
 
+        }).catch((err) => {
+            onError(err)
         })
     });
 

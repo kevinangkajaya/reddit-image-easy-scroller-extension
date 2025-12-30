@@ -6,8 +6,17 @@ const getGalleryCarousel = () => {
         const imgSrc = result[uniqueID] // imgSrc is a set
 
         console.log(imgSrc)
-
         browser.storage.session.remove(uniqueID)
+
+        let htmlContent = '';
+        for (const src of imgSrc) {
+            htmlContent += `<div>
+                <img class="image-content-img" src="${src}" loading="lazy" />
+            </div>
+            <hr />`
+        }
+
+        document.getElementById("image-content").setHTMLUnsafe(htmlContent)
     })
 }
 
