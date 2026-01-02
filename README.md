@@ -13,5 +13,8 @@
 - The lazy loading apparently does not work because there are no fixed heights. Be careful of using up your internet quota if exists.
 - Not tested if there are more than a hundred pictures. Use with your own discretion and be aware of the potential performance problem.
 
+### Links
+- Mozilla addons: https://addons.mozilla.org/en-US/firefox/addon/reddit-image-easy-scroller/
+
 ### Contributing
 - Feel free to contribute by sending pull requests or discussing for a new feature.
