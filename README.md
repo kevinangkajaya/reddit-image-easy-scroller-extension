@@ -16,5 +16,8 @@
 ### Links
 - Mozilla addons: https://addons.mozilla.org/en-US/firefox/addon/reddit-image-easy-scroller/
 
+### Attribution
+- Empty image icon for Edge extension: [empty image icon png](https://www.freeiconspng.com/img/31184)
+
 ### Contributing
 - Feel free to contribute by sending pull requests or discussing for a new feature.

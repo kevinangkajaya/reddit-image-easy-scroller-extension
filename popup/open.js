@@ -1,3 +1,8 @@
+// inject for chromium extension
+if (typeof browser === "undefined") {
+    var browser = chrome
+}
+
 const getActiveTab = async () => {
     let tabs = await browser.tabs.query({ active: true, currentWindow: true })
 
@@ -61,7 +66,10 @@ const findGalleryCarousel = async () => {
                 }
             }
 
-            return imgSrc;
+            // add Array.from() because unlike firefox that send raw data
+            // chromium sends serialized JSON instead, but Set cannot serialized.
+            const returnData = Array.from(imgSrc)
+            return returnData;
 
         }
     })

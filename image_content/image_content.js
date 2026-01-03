@@ -1,12 +1,22 @@
+// inject for chromium extension
+if (typeof browser === "undefined") {
+    var browser = chrome
+}
+
 const getGalleryCarousel = () => {
     let urlParam = new URLSearchParams(window.location.search)
     const uniqueID = urlParam.get("unique-id") // get unique id from the URL
 
     browser.storage.session.get(uniqueID).then((result) => {
-        const imgSrc = result[uniqueID] // imgSrc is a set
+        const imgSrc = result[uniqueID] // imgSrc is an array
 
-        console.log(imgSrc)
-        browser.storage.session.remove(uniqueID)
+        if (imgSrc === undefined) {
+            console.error("No imgSrc")
+            return
+        }
+
+        // don't remove immediately so user can reload, storage session clears after browser usage anyway
+        // browser.storage.session.remove(uniqueID) 
 
         let htmlContent = '';
         for (const src of imgSrc) {
