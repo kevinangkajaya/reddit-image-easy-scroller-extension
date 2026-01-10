@@ -30,9 +30,11 @@
 ### Attribution
 - Empty image icon for Edge extension: [empty image icon png](https://www.freeiconspng.com/img/31184)
 
-
 ### Development Notes
 - Reddit differentiates the structure between reddit post with 1 picture and multiple pictures with gallery carousel, hence a separate function for this.
+- Edge add-ons has additional requirements:
+    - Each image needs to be 640 x 400 pixels or 1280 x 800 pixels (`/images/edge_640x400` folder).
+    - Extension logo needs to have 1:1 aspect ratio (`/icons/empty-image-for-edge.png`)
 
 ### Contributing
 - Feel free to contribute by sending pull requests or discussing for a new feature.
