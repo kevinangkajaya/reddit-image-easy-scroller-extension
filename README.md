@@ -4,9 +4,13 @@
 
 ### How to Use
 - Open reddit post with image gallery (for example, this one: https://www.reddit.com/r/interestingasfuck/comments/1e72b7l/most_recent_images_of_earth/)
+![open_extension_0](/images/open_extension_0.png)
 - Click on Reddit Image Easy Scroller Extension in your extension list.
+![open_extension_1](/images/open_extension_1.png)
 - Click `Open Gallery in new Tab`.
+![open_extension_2](/images/open_extension_2.png)
 - A new tab should be opened with all the pictures that you can scroll down. Enjoy.
+![open_extension_3](/images/open_extension_3.png)
 
 ### Caution
 - The lazy loading apparently does not work because there are no fixed heights. Be careful of using up your internet quota if exists.
