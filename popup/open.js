@@ -41,8 +41,22 @@ const findGalleryCarousel = async () => {
     const imgSrc = await browser.scripting.executeScript({
         target: { tabId: activeTab.id },
         func: () => {
+
+            const getImageSrc = (img) => {
+                if (img.src) {
+                    return img.src
+                } else if (img.getAttribute("data-src")) {
+                    return img.getAttribute("data-src")
+                } else if (img.getAttribute("data-lazy-src")) {
+                    return img.getAttribute("data-lazy-src")
+                }
+
+                return null
+            }
+
             // ============================ find gallery carousel ============================
-            const galleryCarousels = document.getElementsByTagName('gallery-carousel')
+            const galleryCarousels = document.getElementsByTagName('gallery-carousel') // structure for multiple images
+            const shredditMediaLightboxListeners = document.getElementsByTagName('shreddit-media-lightbox-listener') // structure for single image
 
             // ============================ find images on reddit ============================
             const imgSrc = new Set();
@@ -55,12 +69,27 @@ const findGalleryCarousel = async () => {
 
                     for (const img of imgs) {
                         // ========================= append image sources =========================
-                        if (img.src) {
-                            imgSrc.add(img.src)
-                        } else if (img.getAttribute("data-src")) {
-                            imgSrc.add(img.getAttribute("data-src"))
-                        } else if (img.getAttribute("data-lazy-src")) {
-                            imgSrc.add(img.getAttribute("data-lazy-src"))
+                        const srcData = getImageSrc(img)
+                        if (srcData) {
+                            imgSrc.add(srcData)
+                        }
+                    }
+                }
+            }
+
+            // ============================ find for single picture post ============================
+            for (const shredditMediaLightboxListener of shredditMediaLightboxListeners) {
+
+                const zoomableImgs = shredditMediaLightboxListener.getElementsByTagName('zoomable-img')
+
+                for (const zoomableImg of zoomableImgs) {
+                    const imgs = zoomableImg.getElementsByTagName('img')
+
+                    for (const img of imgs) {
+                        // ========================= append image sources =========================
+                        const srcData = getImageSrc(img)
+                        if (srcData) {
+                            imgSrc.add(srcData)
                         }
                     }
                 }
@@ -93,7 +122,7 @@ const listenForClicks = () => {
 
         // ========================= find gallery carousel =========================
         findGalleryCarousel().then((imgSrc) => {
-            if (imgSrc.size === 0) {
+            if (imgSrc.length === 0) {
                 throw new Error("No pictures or only 1 picture present, requires multiple pictures")
             }
 

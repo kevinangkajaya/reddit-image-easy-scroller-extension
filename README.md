@@ -9,7 +9,6 @@
 - A new tab should be opened with all the pictures that you can scroll down. Enjoy.
 
 ### Caution
-- Does not work if the reddit posts only have 1 picture, as reddit differentiate the structure between 1 picture and multiple pictures with gallery carousel
 - The lazy loading apparently does not work because there are no fixed heights. Be careful of using up your internet quota if exists.
 - Not tested if there are more than a hundred pictures. Use with your own discretion and be aware of the potential performance problem.
 
@@ -19,6 +18,10 @@
 
 ### Attribution
 - Empty image icon for Edge extension: [empty image icon png](https://www.freeiconspng.com/img/31184)
+
+
+### Development Notes
+- Reddit differentiates the structure between reddit post with 1 picture and multiple pictures with gallery carousel, hence a separate function for this.
 
 ### Contributing
 - Feel free to contribute by sending pull requests or discussing for a new feature.

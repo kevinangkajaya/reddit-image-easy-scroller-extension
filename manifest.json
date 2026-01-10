@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Reddit Image Easy Scroller Extension",
-    "version": "1.1",
+    "version": "1.2.0",
     "description": "Easily scroll through multiple images on reddit with this extension",
     "homepage_url": "https://github.com/kevinangkajaya/reddit-image-easy-scroller-extension",
     "icons": {
